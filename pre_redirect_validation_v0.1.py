@@ -16,7 +16,8 @@ class RedirectValidator:
 		self.badPairs = []
 
 		cur_dir = os.getcwd()
-		filepath = cur_dir + '\\pre_redirects.csv'
+		filepath = cur_dir + '/pre_redirects.csv'
+		
 		if os.path.isfile(filepath):
 			f = open(filepath,'r')
 			for line in f:
@@ -46,7 +47,7 @@ class RedirectValidator:
 						self.destURLs.append(destURL)
 			f.close()
 		else:
-			print "Error loating the redirect csv file!"
+			print "Error locating the redirect csv file!"
 
 
 	def check_if_looping(self, sourURL, destURL):
@@ -130,7 +131,7 @@ class RedirectValidator:
 		cur_time = str(strftime("%d%b%Y_%H%M%S", localtime()))
 		if self.goodPairs:
 			print "Generate the list of good URLs..."
-			f = open(cur_dir + '\\pre_redirect_report\\redirect_' + cur_time + '_successful.csv', 'w+')
+			f = open(cur_dir + '/pre_redirect_report/redirect_' + cur_time + '_successful.csv', 'w+')
 
 			f.write("Source URL,Destination URL,Comments\n")
 
@@ -143,7 +144,7 @@ class RedirectValidator:
 		if self.badPairs:
 
 			print "Generate the list of bad URLs..."
-			f = open(cur_dir + '\\pre_redirect_report\\redirect_' + cur_time + '_failed.csv', 'w+')
+			f = open(cur_dir + '/pre_redirect_report/redirect_' + cur_time + '_failed.csv', 'w+')
 
 			f.write("Source URL,Destination URL,Comments\n")
 			for urlPairs in self.badPairs:
@@ -152,7 +153,7 @@ class RedirectValidator:
 			f.close()
 			print "Finished\n"
 
-		f = open(cur_dir + '\\pre_redirect_report\\Worktask_for_hosting_' + cur_time + '.txt', 'w+')
+		f = open(cur_dir + '/pre_redirect_report/Worktask_for_hosting_' + cur_time + '.txt', 'w+')
 
 		f.write("Redirection type: " + self.redTypeArray[self.redTypeIndex] + '\n')		
 
